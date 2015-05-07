@@ -2,7 +2,7 @@
 
 ## Goals
 
-* Allow users to sign up and sign in (using the existing user model)
+* Allow users to sign up and sign in (using the existing user model if you like)
 * After signing in, allow users to search the iTunes Store API for movies (only movies! not songs or apps!)
 * Allow user to save a movie to their watch list
 
@@ -24,6 +24,12 @@ To create and migrate your test and development databases, run the following com
 bundle install
 bin/rake db:create db:migrate db:test:prepare
 ```
+
+## Guidelines
+
+* Commit early and often
+* Feel free to write tests
+* Submit your finished project as a zip or a github link
 
 ## Starting the Server
 

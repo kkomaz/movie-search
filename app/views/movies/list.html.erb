@@ -1,0 +1,30 @@
+<% @movies.each do |movie| %>
+  <ul>
+    <div class="form-group">
+        <%= label_tag('movie_name','Movie Name') %>
+        <p><%= movie["trackName"] %></p>
+
+        <%= label_tag('country_name','Country') %>
+        <p><%= movie["country"] %></p>
+
+        <%= label_tag('movie_price','Rental Price') %>
+        <p>$<%= movie["trackHdRentalPrice"] %></p>
+
+        <%= label_tag('movie_image','Movie Poster') %> <br>
+        <%= image_tag "#{movie['artworkUrl100']}" %> <br><br>
+    </div>
+    <%= link_to user_movies_path(@user,
+                                {:movies => {
+                                  :title => "#{movie["trackName"]}",
+                                  :country => "#{movie["country"]}",
+                                  :rental_price => "#{movie["trackHdRentalPrice"]}",
+                                  :image => "#{movie['artworkUrl100']}",
+                                  :short_descrip => "#{movie["shortDescription"]}",
+                                  :long_descrip => "#{movie["longDescription"]}"
+                                  }}),
+                                class: "btn btn-success",
+                                :method => :post do %>
+      <p>Save to Watchlist</p>
+    <% end %>
+  </ul>
+<% end %>

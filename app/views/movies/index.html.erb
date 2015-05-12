@@ -1,9 +1,8 @@
-<% @movies.each do |movie| %>
-  <ul>
-      <li><%= movie["trackName"] %></li>
-      <li><%= movie["country"] %></li>
-      <li><%= movie["short_descrip"] %></li>
-      <li><%= movie["trackHdRentalPrice"] %></li>
-      <%= image_tag "#{movie['artworkUrl100']}" %>
-  </ul>
+<% @user.movies.each do |movie| %>
+<li><%= movie.title %></li>
+<li><%= image_tag movie.image %></li>
+<li><%= movie.country %></li>
+<li><%= movie.rental_price %></li>
+<p><%= movie.long_descrip %></p>
+<%= link_to 'Delete Watchlist', user_movie_path(@user, movie), confirm: 'Are you sure?', method: :delete %>
 <% end %>

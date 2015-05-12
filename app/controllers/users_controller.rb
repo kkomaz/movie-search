@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = User.new(user_params)
     @user.auth_token = params["authenticity_token"]
     if @user.save

@@ -5,7 +5,5 @@ class CreateUserMovies < ActiveRecord::Migration
       t.integer :movie_id
       t.timestamps
     end
-    add_index :user_movies, :user_id
-    add_index :user_movies, :movie_id
   end
 end

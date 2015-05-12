@@ -1,8 +1,22 @@
-<% @user.movies.each do |movie| %>
-<li><%= movie.title %></li>
-<li><%= image_tag movie.image %></li>
-<li><%= movie.country %></li>
-<li><%= movie.rental_price %></li>
-<p><%= movie.long_descrip %></p>
-<%= link_to 'Delete Watchlist', user_movie_path(@user, movie), confirm: 'Are you sure?', method: :delete %>
-<% end %>
+<div class="container">
+  <div class="row top-pad">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><h3><%= "#{current_user.name}'s movies!" %></h3></center>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-12">
+            <%= render :partial => 'movies/movie', :collection => @movies, :as => 'movie' %>
+          </div>
+        </div>
+        <div class="paginator">
+          <center><%= paginate @movies %></center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

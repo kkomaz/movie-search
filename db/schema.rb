@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512012130) do
+ActiveRecord::Schema.define(version: 20150512174308) do
 
   create_table "movies", force: true do |t|
     t.datetime "created_at"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150512012130) do
     t.string   "country"
     t.text     "short_descrip"
     t.text     "long_descrip"
-    t.integer  "rental_price"
+    t.string   "collection_price"
     t.string   "image"
   end
 

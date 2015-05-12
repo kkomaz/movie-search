@@ -1,0 +1,13 @@
+.search {
+  color: white;
+}
+
+div.top-pad {
+  padding-top: 100px;
+}
+
+div.movie_image{
+  img{
+    display: block;
+  }
+}

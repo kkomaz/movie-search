@@ -1,0 +1,17 @@
+<div class="col-md-4">
+  <div class="panel-panel-default">
+    <div class="panel-heading">
+        <center><%= image_tag "#{movie.image}" %></center>
+      <div class="movie-image">
+        <center><h4><%= movie.title %></h4></center>
+      </div>
+    </div>
+    <div class="panel-body">
+      <%= movie.country %>
+      <%= movie.collection_price %>
+      <%= movie.long_descrip %> <br><br>
+      <%= link_to 'Delete Watchlist', user_movie_path(@user, movie), confirm: 'Are you sure?', method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+  

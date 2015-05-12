@@ -19,6 +19,7 @@ group :development, :test do
   gem 'better_errors', '2.1.1'
   gem 'binding_of_caller', '0.7.2'
   gem 'pry', '0.10.1'
+  gem 'awesome_print', '~> 1.6.1'
 end
 
 group :development do

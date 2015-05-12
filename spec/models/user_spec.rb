@@ -10,17 +10,17 @@ describe User do
     context "for a new user" do
       
       it "should not be valid without a password" do
-        user = FactoryGirl.build(:user, password: nil, password_confirmation: nil)
+        user = build(:user, password: nil, password_confirmation: nil)
         expect(user).to_not be_valid
       end
  
       it "should be not be valid with a short password" do
-        user = FactoryGirl.build(:user, password: "short", password_confirmation: "short")
+        user = build(:user, password: "short", password_confirmation: "short")
         expect(user).to_not be_valid
       end
  
       it "should not be valid with a confirmation mismatch" do
-        user = FactoryGirl.build(:user, password: "weather", password_confirmation: "whether")
+        user = build(:user, password: "weather", password_confirmation: "whether")
         expect(user).to_not be_valid
       end
     
@@ -28,7 +28,7 @@ describe User do
  
     context "for an existing user" do
       
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { create(:user) }
  
       it "should be valid with no changes" do
         expect(user).to be_valid
@@ -52,7 +52,7 @@ describe User do
     context "for a user with no auth token" do
       
       let(:password) { "lemme in" }
-      let(:user) { FactoryGirl.create(:user, password: password, auth_token: nil) }
+      let(:user) { create(:user, password: password, auth_token: nil) }
       
       it "should generate and save a new token on successful authentication" do
         expect(user.auth_token).to be_nil
@@ -76,7 +76,7 @@ describe User do
     context "for a user with an auth token" do
 
       let(:password) { "lemme in" }
-      let(:user) { FactoryGirl.create(:user, password: password) }
+      let(:user) { create(:user, password: password) }
 
       it "should not change the existing auth token on successful authentication" do
         original_token = user.auth_token

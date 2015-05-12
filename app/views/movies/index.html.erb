@@ -1,6 +1,9 @@
-<li><%= @movie.title %></li>
-<li><%= @movie.country %></li>
-<li><%= @movie.short_descrip %></li>
-<li><%= @movie.rental_price %></li>
-
-<%= image_tag "#{@movie.image}" %>
+<% @movies.each do |movie| %>
+  <ul>
+      <li><%= movie["trackName"] %></li>
+      <li><%= movie["country"] %></li>
+      <li><%= movie["short_descrip"] %></li>
+      <li><%= movie["trackHdRentalPrice"] %></li>
+      <%= image_tag "#{movie['artworkUrl100']}" %>
+  </ul>
+<% end %>

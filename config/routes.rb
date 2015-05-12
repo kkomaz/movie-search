@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "login"
   get 'log_out' => "sessions#destroy", :as => "logout"
   get "/:id/search" => "search#new", :as => "search"
-
+  get "/:id/movies" => "users#list", :as => "user_movies"
   post '/movies' => 'movies#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

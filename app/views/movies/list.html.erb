@@ -1,35 +1,8 @@
-<% @movies.each do |movie| %>
-  <ul>
-    <div class="form-group">
-        <%= label_tag('movie_name','Movie Name') %>
-        <p><%= movie.title %></p>
-
-        <%= label_tag('country_name','Country') %>
-        <p><%= movie.country %></p>
-
-        <%= label_tag('movie_price','Rental Price') %>
-        <p>$<%= movie.collection_price %></p>
-
-        <%= label_tag('movie_image','Movie Poster') %> <br>
-        <%= image_tag "#{movie.image}" %> <br><br>
+<div class="container">
+    <div class="row top-pad">
+        <div class="col-md-12">
+            <%= render :partial => 'movies/search', :collection => @movies, :as => 'movie' %>
+        </div>
     </div>
+</div>
 
-    <% if @user.movies.include?(movie) %>
-        <%= link_to 'Delete Watchlist', user_movie_path(@user, movie), confirm: 'Are you sure?', method: :delete, class: "btn btn-danger" %>
-    <% else %>
-        <%= link_to user_movies_path(@user,
-                                    {:movies => {
-                                        :title => movie.title,
-                                        :country => movie.country,
-                                        :collection_price => movie.collection_price.to_s,
-                                        :image => movie.image,
-                                        :short_descrip => movie.short_descrip,
-                                        :long_descrip => movie.long_descrip
-                                      }}),
-                                    class: "btn btn-success",
-                                    :method => :post do %>
-          <p>Save to Watchlist</p>
-        <% end %>
-    <% end %>
-  </ul>
-<% end %>

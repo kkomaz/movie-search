@@ -1,0 +1,20 @@
+<div class="col-md-3">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div style="text-align: center">
+        <%= image_tag "#{movie.image}" %> <br>
+        <p><strong><%= truncate(movie.title, :length => 20) %></strong></p>
+
+        <p><strong>Country</strong></p>
+        <p><%= movie.country %></p>
+
+        <p><strong>Collection Price</strong></p>
+        <p>$<%= movie.collection_price %></p>
+
+        <%= watch_list(@user, movie) %>
+
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -29,12 +29,17 @@ class User < ActiveRecord::Base
     update_attribute :auth_token, nil
   end
 
+  def watchlist
+    movie_ids = UserMovie.where(:user_id => self.id, :watchlist => true).pluck(:movie_id)
+    Movie.where(:id => movie_ids)
+  end
+
   def available_movies
     self.movies.where(:available => true)
   end
 
-  def unavailable_movies
-    self.movies.where(:available => false)
-  end
+  # def unavailable_movies
+  #   self.movies.where(:available => false)
+  # end
 
 end

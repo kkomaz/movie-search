@@ -2,7 +2,12 @@
     <div class="row top-pad">
         <div class="col-md-12">
           <% if @movies.empty? %>
-            <h4 style="text-align: center">Nothing matches your search... Please try again!</h4>
+            <h4 style="text-align: center">Nothing matches your search...</h4>
+            <h4 style="text-align: center">Would you like to be notified when your movie is available?</h4>
+            <%= link_to subscription_path(@user, {:movies => {:title => @movie.title, :available => @movie.available}}),
+              :method => :post do %>
+                <p>Subscribe to email list</p>
+              <% end %>
           <% else %>
             <%= render :partial => 'movies/search', :collection => @movies, :as => 'movie' %>
           <% end %>

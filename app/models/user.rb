@@ -29,4 +29,12 @@ class User < ActiveRecord::Base
     update_attribute :auth_token, nil
   end
 
+  def available_movies
+    self.movies.where(:available => true)
+  end
+
+  def unavailable_movies
+    self.movies.where(:available => false)
+  end
+
 end

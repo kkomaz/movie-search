@@ -27,6 +27,7 @@ group :development, :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'sqlite3'
+  gem 'prybaby'
 end
 
 group :development do

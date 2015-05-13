@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get "/:id/search" => "search#new", :as => "search"
 
   post '/movies' => 'movies#list'
+  post '/:id/subscription' => 'movies#subscription', :as => "subscription"
 
 end

@@ -9,7 +9,6 @@ module MoviesHelper
                               :country => movie.country,
                               :collection_price => movie.collection_price.to_s,
                               :image => movie.image,
-                              :short_descrip => movie.short_descrip,
                               :long_descrip => movie.long_descrip
                             }}),
                           class: "btn btn-success",

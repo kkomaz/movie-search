@@ -99,6 +99,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    prybaby (0.0.2.2)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -211,6 +212,7 @@ DEPENDENCIES
   launchy
   pg
   pry (= 0.10.1)
+  prybaby
   rails (= 4.1.1)
   rails_12factor
   rspec (= 3.2.0)

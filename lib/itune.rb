@@ -19,7 +19,6 @@ class Itune
 
   def get_movies
     @search_hash = JSON.load(open(@url))
-    
     @search_hash["results"].collect do |movie| 
       Movie.find_or_create_by(
                                :title => movie["trackName"],
@@ -27,7 +26,7 @@ class Itune
                                :image => movie["artworkUrl100"],
                                :short_descrip => movie["shortDescription"],
                                :long_descrip => movie['longDescription'],
-                               :collection_price => movie["collectionPrice"]
+                               :collection_price => movie["collectionPrice"].to_s
                              )                        
     end
   end

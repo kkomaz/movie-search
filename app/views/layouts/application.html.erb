@@ -10,11 +10,11 @@
 
 <%= render 'layouts/navbar' %>
 
-<% if flash[:notice] %>
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+<div class="top-pad">
+ <% flash.each do |name, msg| -%>
+    <center><%= content_tag :div, msg, class: name %></center>
+ <% end -%>
+</div>
 
 <%= yield %>
 

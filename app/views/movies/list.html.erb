@@ -1,7 +1,11 @@
 <div class="container">
     <div class="row top-pad">
         <div class="col-md-12">
+          <% if @movies.empty? %>
+            <h4 style="text-align: center">Nothing matches your search... Please try again!</h4>
+          <% else %>
             <%= render :partial => 'movies/search', :collection => @movies, :as => 'movie' %>
+          <% end %>
         </div>
     </div>
 </div>

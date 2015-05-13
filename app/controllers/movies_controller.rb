@@ -1,9 +1,11 @@
 class MoviesController < ApplicationController
+  #user's movies index
   def index
     @user = User.find(params[:user_id])
     @movies = Kaminari.paginate_array(@user.movies.reverse).page(params[:page]).per(3)
   end
 
+  #search results from movies
   def list
     @user = current_user
     @movies = Itune.new(params[:movie]).get_movies

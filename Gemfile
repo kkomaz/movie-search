@@ -21,6 +21,11 @@ group :development, :test do
   gem 'binding_of_caller', '0.7.2'
   gem 'pry', '0.10.1'
   gem 'awesome_print', '~> 1.6.1'
+  gem 'faker'
+  gem 'capybara'
+  gem 'warden-rspec-rails'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :development do

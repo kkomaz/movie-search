@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in(@user)
       redirect_to root_path, :notice => "Logged in!"
     else
-      flash.now[:alert] = "Invalid email or password or User does not exist"
+      flash.now[:notice] = "Invalid email or password or User does not exist"
       render "new"
     end
   end

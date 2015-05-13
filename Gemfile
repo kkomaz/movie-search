@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.1'
-
 gem 'bcrypt', '3.1.7'
 gem 'jbuilder', '2.0'
 gem 'jquery-rails', '2.0.2'
 # gem 'pg'
 gem 'settingslogic', '2.0.9'
-gem 'sqlite3', '1.3.10'
 gem 'turbolinks', '2.5.3'
 gem 'thin', '1.6.3'
 gem 'kaminari', '~> 0.16.3'
+gem 'pg'
+gem 'rails_12factor'
 
 group :doc do
   gem 'sdoc', '0.4.0'
@@ -26,6 +26,7 @@ group :development, :test do
   gem 'warden-rspec-rails'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'sqlite3'
 end
 
 group :development do

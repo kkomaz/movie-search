@@ -30,7 +30,6 @@ describe User do
       
       let(:user) { create(:user) }
       it "should be valid with no changes" do
-        binding.pry
         expect(user).to be_valid
       end
  

@@ -9,7 +9,7 @@
       <li><%= link_to "Log out", logout_path %></li>
       <li>
         <div class="form-group" style="margin-top: 15px">
-          <%= form_tag(movies_path) do |f| %>
+          <%= form_tag(movies_path) do %>
             <%= label_tag('movie','Movie Search', class: 'search') %>
             <%= text_field_tag('movie')%>
             <%= submit_tag 'Search'%>

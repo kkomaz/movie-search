@@ -9,7 +9,6 @@ class MoviesController < ApplicationController
   def list
     @user = current_user
     @movies = Itune.new(params[:movie]).get_movies
-    binding.pry
   end
 
   def create

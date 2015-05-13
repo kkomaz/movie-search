@@ -11,9 +11,9 @@
 <%= render 'layouts/navbar' %>
 
 <div class="top-pad">
- <% flash.each do |name, msg| -%>
-    <center><%= content_tag :div, msg, class: name %></center>
- <% end -%>
+   <% flash.each do |name, msg| -%>
+      <center><%= content_tag :div, msg, class: name %></center>
+   <% end -%>
 </div>
 
 <%= yield %>

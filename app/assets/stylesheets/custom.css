@@ -11,3 +11,7 @@ div.movie_image{
     display: block;
   }
 }
+
+div.center_text {
+  text-align: center;
+}

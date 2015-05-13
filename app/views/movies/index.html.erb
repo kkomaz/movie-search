@@ -2,17 +2,21 @@
   <div class="row top-pad">
     <div class="col-md-12">
       <div class="panel panel-default">
+        
         <div class="panel-heading">
           <center><h3><%= "#{current_user.name}'s movies!" %></h3></center>
         </div>
+        
         <div class="panel-body">
           <div class="col-md-12">
             <%= render :partial => 'movies/movie', :collection => @movies, :as => 'movie' %>
           </div>
         </div>
+        
         <div class="paginator">
           <center><%= paginate @movies %></center>
         </div>
+      
       </div>
     </div>
   </div>

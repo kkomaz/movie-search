@@ -2,11 +2,12 @@ require 'json'
 require 'open-uri'
 
 class Itune
-  attr_accessor :search_hash, :url
+  attr_accessor :search_hash, :url, :user
 
   BASE_URL = "https://itunes.apple.com/search?entity=movie&term="
 
-  def initialize(movie)
+  def initialize(movie, user)
+    @user = user
     if movie.split(" ").length == 1
       @url = "#{BASE_URL}#{movie.downcase}"
     else
@@ -20,13 +21,19 @@ class Itune
     @search_hash["results"].collect do |movie| 
       
       result = Movie.find_or_create_by(:title => movie["trackName"])
-      
-      if result.country == nil
+
+      if @user.movies.include?(result) && result.country == nil
+
+        result.users.each do |user|
+          UserMailer.movie_notification(user, result).deliver
+        end
+
         result.update(
                      :country => movie["country"],
                      :image => movie["artworkUrl100"],
                      :long_descrip => movie['longDescription'],
-                     :collection_price => movie["collectionPrice"].to_s
+                     :collection_price => movie["collectionPrice"].to_s,
+                     :available => true
                    )
       else
         result.update(
@@ -36,21 +43,7 @@ class Itune
              :collection_price => movie["collectionPrice"].to_s
            )
       end
-      result         
+      result
     end
   end
 end
-
-
-# def get_movies
-#   @search_hash = JSON.load(open(@url))
-#   @search_hash["results"].collect do |movie| 
-#     Movie.find_or_create_by(
-#                              :title => movie["trackName"],
-#                              :country => movie["country"],
-#                              :image => movie["artworkUrl100"],
-#                              :long_descrip => movie['longDescription'],
-#                              :collection_price => movie["collectionPrice"].to_s
-#                            )                        
-#   end
-# end

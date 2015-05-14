@@ -1,10 +1,8 @@
 module MoviesHelper
   def watch_list(user, movie)
     if @user.movies.include?(movie) && (UserMovie.where(:user_id => user.id, :movie_id => movie.id).first.watchlist == true)
-      # binding.pry
       link_to 'Delete Watchlist', user_movie_path(@user, movie), confirm: 'Are you sure?', method: :delete, class: "btn btn-danger"
     else
-      # binding.pry
       link_to user_movies_path(@user,
                           {:movies => {
                               :title => movie.title,

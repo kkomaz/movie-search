@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
   #search results from movies
   def list
     @user = current_user
-    @movies = Itune.new(params[:movie]).get_movies
+    @movies = Itune.new(params[:movie], @user).get_movies
     if @movies.empty?
       @movie = Movie.find_or_create_by(:title => params[:movie], 
                                        :available => false)

@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 class Itune
-  attr_accessor :search_hash, :url, :user
+  attr_accessor :search_hash, :url, :user, :all_movies
 
   BASE_URL = "https://itunes.apple.com/search?entity=movie&term="
 
@@ -18,12 +18,13 @@ class Itune
 
   def get_movies
     @search_hash = JSON.load(open(@url))
+
     @search_hash["results"].collect do |movie| 
       
       result = Movie.find_or_create_by(:title => movie["trackName"])
 
-      if @user.movies.include?(result) && result.country == nil
-
+      if all_user_movies.include?(result) && result.country == nil
+        
         result.users.each do |user|
           UserMailer.movie_notification(user, result).deliver
         end
@@ -46,4 +47,17 @@ class Itune
       result
     end
   end
+
+  private
+
+  def all_user_movies
+    @all_users = User.includes(:movies)
+    
+    @all_users.collect do |user|
+      user.movies.collect do |movie|
+        movie
+      end
+    end.flatten
+  end
+
 end

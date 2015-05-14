@@ -11,6 +11,8 @@ gem 'thin', '1.6.3'
 gem 'kaminari', '~> 0.16.3'
 gem 'pg'
 gem 'rails_12factor'
+gem 'mail_form'
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', '0.4.0'

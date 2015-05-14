@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
     if !@user.movies.include?(@movie)
       @user.movies.build(:movie => @movie)
     end
-    redirect_to user_movies_path
+    # redirect_to user_movies_path
   end
 
   def destroy
@@ -41,7 +41,11 @@ class MoviesController < ApplicationController
     @movie = @user.movies.find(params[:id])
     @user_movie = UserMovie.where(:user_id => @user.id, :movie_id => @movie.id)
     @user_movie.first.update(:watchlist => false)
-    redirect_to user_movies_path(@user)
+    
+    respond_to do |format|
+      format.html {redirect_to user_movies_path(@user)}
+      format.js {}
+    end
   end
 
   private

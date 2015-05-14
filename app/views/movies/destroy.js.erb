@@ -1,0 +1,3 @@
+var movieId = <%= @movie.id %>
+$('.watchlist-button-' + movieId).html("<%= j render partial: 'movies/watchlist', locals: {movie: @movie, user: @user }  %>")
+

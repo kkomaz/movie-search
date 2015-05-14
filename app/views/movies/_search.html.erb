@@ -11,8 +11,9 @@
         <p><strong>Collection Price</strong></p>
         <p>$<%= movie.collection_price %></p>
         
-        <!-- helper method -->
-        <%= watch_list(@user, movie) %>
+        <div class="watchlist-button-<%= movie.id %>">
+          <%= render :partial => 'movies/watchlist', locals: {movie: movie, user: @user} %>
+        </div>
 
       </div>
     </div>

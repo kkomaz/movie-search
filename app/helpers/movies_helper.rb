@@ -10,7 +10,7 @@ module MoviesHelper
                               :collection_price => movie.collection_price.to_s,
                               :image => movie.image,
                               :long_descrip => movie.long_descrip
-                            }}),
+                            }}), remote: true,
                           class: "btn btn-success",
                           :method => :post do
       "Save to Watchlist"

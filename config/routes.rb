@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'log_out' => "sessions#destroy", :as => "logout"
   get "/:id/search" => "search#new", :as => "search"
 
-  post '/movies' => 'movies#list'
+  get '/movies' => 'movies#list'
   post '/:id/subscription' => 'movies#subscription', :as => "subscription"
 
 end

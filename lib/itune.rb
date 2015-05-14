@@ -8,12 +8,8 @@ class Itune
 
   def initialize(movie, user)
     @user = user
-    if movie.split(" ").length == 1
-      @url = "#{BASE_URL}#{movie.downcase}"
-    else
-      movie = movie.gsub(" ", "+")
-      @url = "#{BASE_URL}#{movie.downcase}"
-    end
+    @movie = movie
+    length_check
   end
 
   def get_movies
@@ -24,7 +20,6 @@ class Itune
       result = Movie.find_or_create_by(:title => movie["trackName"])
 
       if all_user_movies.include?(result) && result.country == nil
-        
         result.users.each do |user|
           UserMailer.movie_notification(user, result).deliver
         end
@@ -60,4 +55,12 @@ class Itune
     end.flatten
   end
 
+  def length_check  
+    if @movie.split(" ").length == 1
+      @url = "#{BASE_URL}#{@movie.downcase}"
+    else
+      @movie = @movie.gsub(" ", "+")
+      @url = "#{BASE_URL}#{@movie.downcase}"
+    end
+  end
 end

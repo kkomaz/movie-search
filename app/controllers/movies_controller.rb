@@ -27,9 +27,8 @@ class MoviesController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = User.find(params[:user_id])
-    @movie = Movie.find_or_create_by(movie_params)
+    @movie = Movie.find(params[:movies])
     UserMovie.find_or_create_by(:user_id => @user.id, :movie_id => @movie.id).update(:watchlist => true)
     if !@user.movies.include?(@movie)
       @user.movies.build(:movie => @movie)

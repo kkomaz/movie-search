@@ -5,7 +5,7 @@
                                   method: :delete, 
                                   class: "btn btn-danger" %>
 <% else %>
-  <%= link_to user_movies_path(user, {:movies => movie.title}), class: "btn btn-success", :remote => true,
+  <%= link_to user_movies_path(@user, {:movies => movie.id }), class: "btn btn-success", :remote => true,
                                       :method => :post do %>
                                         "Save to Watchlist"
                                       <% end %>

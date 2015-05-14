@@ -10,7 +10,6 @@ class MoviesController < ApplicationController
     @user = current_user
     @movies = Itune.new(params[:movie]).get_movies
     if @movies.empty?
-      # binding.pry
       @movie = Movie.find_or_create_by(:title => params[:movie], 
                                        :available => false)
       @user_movie = UserMovie.find_or_create_by(:user_id => @user.id, :movie_id => @movie.id, :watchlist => false)
@@ -22,7 +21,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(:title => params[:movies][:title])
     
     unless @movie.users.include?(@user)
-      @movie.users.push(@user)
+      @movie.users.build(:user => @user)
     end
     redirect_to root_path
   end
@@ -30,12 +29,10 @@ class MoviesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @movie = Movie.find_or_create_by(movie_params)
-    UserMovie.where(:user_id => @user.id, :movie_id => @movie.id).first.update(:watchlist => true)
+    UserMovie.find_or_create_by(:user_id => @user.id, :movie_id => @movie.id).update(:watchlist => true)
     if !@user.movies.include?(@movie)
-      # binding.pry
-      @user.movies.push(@movie)
+      @user.movies.build(:movie => @movie)
     end
-    # binding.pry
     redirect_to user_movies_path
   end
 

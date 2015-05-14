@@ -4,10 +4,10 @@
           <% if @movies.empty? %>
             <h4 style="text-align: center">Nothing matches your search...</h4>
             <h4 style="text-align: center">Would you like to be notified when your movie is available?</h4>
-            <%= link_to subscription_path(@user, {:movies => {:title => @movie.title, :available => @movie.available}}),
+            <center><%= link_to subscription_path(@user, {:movies => {:title => @movie.title, :available => @movie.available}}),
               :method => :post do %>
                 <p>Subscribe to email list</p>
-              <% end %>
+              <% end %></center>
           <% else %>
             <%= render :partial => 'movies/search', :collection => @movies, :as => 'movie' %>
           <% end %>

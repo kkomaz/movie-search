@@ -4,7 +4,7 @@
           <% if @movies.empty? %>
             <h4 style="text-align: center">Nothing matches your search...</h4>
             <h4 style="text-align: center">Would you like to be notified when your movie is available?</h4>
-            <center><%= link_to subscription_path(current_user, {:movies => {:title => @movie.title, :available => @movie.available}}),
+            <center><%= link_to subscription_path(current_user, {:movies => @movie.id}),
               :method => :post do %>
                 <p>Subscribe to email list</p>
               <% end %></center>

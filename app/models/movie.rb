@@ -9,4 +9,8 @@ class Movie < ActiveRecord::Base
   def self.unavailable
     self.where(:available => false)
   end
+
+  def self.unrecognized_movie(movie_title, available)
+    self.find_or_create_by(:title => movie_title, :available => available)
+  end
 end

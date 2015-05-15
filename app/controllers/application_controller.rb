@@ -19,16 +19,4 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
   helper_method :logged_in?
-
-  # def authorized?
-  #   logged_in? && current_user.id == params[:id].to_i
-  # end
-
-  # def authorized_action
-  #   unless authorized?
-  #     flash[:danger] = "You must be logged in to search!"
-  #     redirect_to login_path
-  #   end
-  # end
-
 end

@@ -45,10 +45,10 @@ feature "user functionality" do
       expect(page).to have_content("Interstellar") 
     end
 
-    scenario "returns no search found when nothing in database" do
+    scenario "returns no search message found when nothing in database" do
       fill_in "movie", :with => "asdasdadsasd"
       click_on "Search"
-      expect(page).to have_content("Nothing matches your search... Please try again!") 
+      expect(page).to have_content("Nothing matches your search... Would you like to be notified when your movie is available? Subscribe to email list") 
     end
   end
 

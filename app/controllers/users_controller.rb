@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, :notice => "Signed up!"
     else
+      flash[:alert] = "Please try again.. you might have messed up.. kinda"
       render "new"
     end
   end

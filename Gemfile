@@ -10,7 +10,6 @@ gem 'turbolinks', '2.5.3'
 gem 'thin', '1.6.3'
 gem 'kaminari', '~> 0.16.3'
 gem 'pg'
-gem 'rails_12factor'
 gem 'figaro'
 
 group :doc do
@@ -29,6 +28,10 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'sqlite3'
   gem 'prybaby'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 group :development do

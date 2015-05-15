@@ -2553,7 +2553,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   }
 @media (min-width: 768px) {
   .pagination {
-    display: inline-block;
+    
     }
   }
 .pagination > ul {

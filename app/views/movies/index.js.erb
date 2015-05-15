@@ -1,0 +1,2 @@
+$('.user-movies').html("<%= j render partial: 'movies/movie', :collection => @movies, :as => 'movie'%>");
+$('#paginator').html('<%= j(paginate(@movies, :remote => true).to_s) %>');

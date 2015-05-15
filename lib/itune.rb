@@ -16,14 +16,9 @@ class Itune
     @search_hash = JSON.load(open(@url))
 
     @search_hash["results"].collect do |movie| 
-      
       result = Movie.find_or_create_by(:title => movie["trackName"])
-
       if all_user_movies.include?(result) && result.country == nil
-        result.users.each do |user|
-          UserMailer.movie_notification(user, result).deliver
-        end
-
+        send_mail(result)
         result.update(
                      :country => movie["country"],
                      :image => movie["artworkUrl100"],
@@ -61,6 +56,12 @@ class Itune
     else
       @movie = @movie.gsub(" ", "+")
       @url = "#{BASE_URL}#{@movie.downcase}"
+    end
+  end
+
+  def send_mail(result)
+    result.users.each do |user|
+      UserMailer.movie_notification(user, result).deliver
     end
   end
 end

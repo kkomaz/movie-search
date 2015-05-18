@@ -25,7 +25,6 @@ class Itune
                      :long_descrip => movie['longDescription'],
                      :collection_price => movie["collectionPrice"].to_s
                    )
-        binding.pry
       else
         result.update(
              :country => movie["country"],

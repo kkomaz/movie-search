@@ -37,7 +37,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie = @user.movies.find(params[:id])
     @user_movie = UserMovie.finder(@user, @movie)
-    @user_movie.update(:watchlist => false)
+    @user_movie.destroy
     
     respond_to do |format|
       format.html {redirect_to user_movies_path(@user)}

@@ -23,7 +23,8 @@ class Itune
                      :country => movie["country"],
                      :image => movie["artworkUrl100"],
                      :long_descrip => movie['longDescription'],
-                     :collection_price => movie["collectionPrice"].to_s
+                     :collection_price => movie["collectionPrice"].to_s,
+                     :available => true
                    )
       else
         result.update(

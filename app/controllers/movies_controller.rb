@@ -23,6 +23,7 @@ class MoviesController < ApplicationController
       @movie.users.build(:user => @user)
     end
     redirect_to root_path
+    flash[:alert] = "Thank you!, you will be notified when movie is available!"
   end
 
   def create

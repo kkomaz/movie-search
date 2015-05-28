@@ -52,6 +52,23 @@ feature "user functionality" do
     end
   end
 
+  context "User subscription functionality" do
+    let!(:user) {create(:user)}
+
+    before do
+      login(user)
+    end
+
+    scenario "Notify user with alert message when applying to email subscription" do
+      fill_in "movie", :with => "asdasdadsasd"
+      click_on "Search"
+      click_on "Subscribe to email list"
+      expect(page).to have_content("Thank you!, you will be notified when movie is available!") 
+    end
+
+
+  end
+
   context "User's movies watchlist functionality" do 
     
     let!(:user) {create(:user)}
